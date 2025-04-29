@@ -1,0 +1,168 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* Navigation */
+header {
+  background-color: #111111;
+  padding: 1rem 0;
+}
+
+h1 {
+  font-family: 'Contrail One', sans-serif;
+  font-weight: 900;
+}
+
+.navbar {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-home img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width:20%;
+  margin: 1rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f39c12;
+}
+
+/* Home Section */
+.home-section {
+  padding: 2rem;
+  text-align: center;
+}
+.category-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-top: -.5rem;
+}
+.product-categories {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.category-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  width: 150px;
+  height: 120px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.about {
+  
+}
+/* Search bar */
+.searchbar {
+  background-color: #111111;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  border: none;
+  font-size: 17px;
+  align-items: center;
+}
+
+#searchInput {
+  width: 300px;
+  height: 50px;
+  padding: 0 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #f8f8f8; 
+  color: black;
+}
+
+/* About Section */
+.about {
+  margin-top: 2rem;
+}
+
+/* Footer */
+footer {
+  background-color: #222222;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Login */
+.login-form {
+  display: flex;
+  justify-content: 
+}
+.login {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 17px;
+  border: none;
+  width: 300px;
+  margin: 20px auto; 
+  height: 50vh; 
+}
+
+.login-form h1 {
+  color: #333333;
+}
+
+.login button {
+  width: 300px;
+  height: 50px;
+  padding: 0 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #ababab; 
+}
+
+.login img {
+  display: flex;
+  justify-content: right;
+  
+}
