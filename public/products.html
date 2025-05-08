@@ -1,35 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Products - AutoParts Hub</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">AutoParts Hub</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="login.html">Sign In</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - AutoParts Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar">
+        <ul class="nav-links left">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
 
-  <main>
-    <h1>Product Gallery</h1>
-    <div class="product-categories">
-      <div class="category-card">Image<br />Exhaust</div>
-      <div class="category-card">Image<br />Intakes</div>
-      <div class="category-card">Image<br />ECU Tunes</div>
+        <div class="logo">
+          <img
+            src="https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/image.png?v=1746427242942"
+            alt="Logo"
+          />
+        </div>
+
+        <ul class="nav-links right">
+          <li><a href="contact.html" class="split">Contact</a></li>
+          <li><a href="login.html" class="split">Sign In</a></li>
+          <li><a href="user.html" class="split">My Account</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-home">
+      <form class="searchbar" id="frontsearch">
+        <input
+          type="text"
+          id="searchInput"
+          name="query"
+          placeholder="Search..."
+        />
+      </form>
     </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
-  </footer>
-</body>
+    <main>
+      <h1>Product Gallery</h1>
+      <div class="product-categories">
+        <div class="category-card"><Image<br />Exhaust</div>
+        <div class="category-card">Image<br />Intakes</div>
+        <div class="category-card">Image<br />ECU Tunes</div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
