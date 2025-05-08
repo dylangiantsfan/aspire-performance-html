@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ - AutoParts Hub</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">AutoParts Hub</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="login.html">Sign In</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - AutoParts Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigtion Bar -->
+    <header>
+      <nav class="navbar">
+        <ul class="nav-links left">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
 
-  <main>
-    <h1>Frequently Asked Questions</h1>
-    <p><strong>Q:</strong> What is your return policy?<br><strong>A:</strong> We accept returns within 30 days.</p>
-    <p><strong>Q:</strong> Do you ship internationally?<br><strong>A:</strong> Yes, with additional charges.</p>
-  </main>
+        <div class="logo">
+          <img
+            src="https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/image.png?v=1746427242942"
+            alt="Logo"
+          />
+        </div>
 
-  <footer>
-    <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
-  </footer>
-</body>
+        <ul class="nav-links right">
+          <li><a href="contact.html" class="split">Contact</a></li>
+          <li><a href="login.html" class="split">Sign In</a></li>
+          <li><a href="user.html" class="split">My Account</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Search Bar -->
+    <div class="search-home">
+      <form class="searchbar" id="frontsearch">
+        <input
+          type="text"
+          id="searchInput"
+          name="query"
+          placeholder="Search..."
+        />
+      </form>
+    </div>
+
+    <main>
+      <div class="faq">
+        <h1>Frequently Asked Questions</h1>
+        <p>
+          <strong>Q:</strong> What is your return policy?<br /><strong
+            >A:</strong
+          >
+          We accept returns within 30 days.
+        </p>
+        <p>
+          <strong>Q:</strong> Do you ship internationally?<br /><strong
+            >A:</strong
+          >
+          Yes, with additional charges.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
