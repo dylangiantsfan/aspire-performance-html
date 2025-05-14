@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
+
 /* General Reset */
 * {
   margin: 0;
@@ -12,12 +13,20 @@ body {
   background-color: #f5f5f5;
   color: #333333;
   line-height: 1.6;
+  min-height: 100vh;
+}
+
+main{
+  flex: 1;
 }
 
 /* Navigation */
 header {
   background-color: #111111;
   padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 h1 {
@@ -31,7 +40,6 @@ h1 {
   height: auto;
   margin: 0 auto;
   display: flex;
-  position: sticky;
   top: 0;
   justify-content: space-between;
   align-items: center;
@@ -66,6 +74,14 @@ h1 {
   color: #f39c12;
 }
 
+.nav-links a:focus {
+  color: #fffcf7;
+}
+
+.nav-links a:active {
+  color: #ab6d09;
+}
+
 .logo img {
   
   border-radius: 4px;
@@ -81,6 +97,28 @@ h1 {
   padding: 2rem;
   text-align: center;
 }
+/*.category-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-top: -.5rem;
+}
+.product-categories {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.category-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  width: 150px;
+  height: 120px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+*/
 
 /* Slideshow container. Can remove if desired, was testing an alternate way to display products */
 .product-categories{
@@ -234,32 +272,35 @@ footer {
   color: #ffffff;
   text-align: center;
   padding: 1rem 0;
-  position: fixed;
   bottom: 0;
   width: 100%;
 }
 
 /* Login */
-
 .login-form {
+  padding: 2.5rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-.login {
-  padding: 1rem 0;
-  display: flex;
-  margin-top: 4rem;
-  flex-direction: column;
-  font-size: 17px;
-  border: none;
+.login-form:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
+
 
 .login-form h1 {
   color: #333333;
-  padding: 4rem;
   font-family: "Josefin Sans", sans-serif;
-
 }
 
 .login input {
@@ -325,4 +366,117 @@ footer {
 .user h1 {
   font-family: "Josefin Sans", sans-serif;
 
+}
+
+/* Products */
+/* Main product grid container */
+#product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual product card */
+.product-containter h1 {
+  
+}
+.product-card {
+  background: white;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  border-color: #a88734 #9c7e31 #846a29;
+  transform: translateY(-2px);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product-title {
+  font-size: 16px;
+  line-height: 1.3;
+  color: #111111;
+  margin-bottom: 8px;
+  flex-grow: 1;
+}
+
+.product-title:hover {
+  color: #c45500;
+  text-decoration: underline;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #B12704;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.product-rating {
+  color: #FFA41C;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.add-to-cart {
+  background: #f39c12;
+  border: 1px solid #FCD200;
+  border-radius: 4px;
+  padding: 8px 0;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: auto;
+}
+
+.add-to-cart:hover {
+  background: #F7CA00;
+  border-color: #F2C200;
+}
+
+.prime-badge {
+  width: 60px;
+  margin: 5px 0;
+}
+
+/* product detail page */
+.product-detail-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.product-detail-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.product-detail-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.back-to-products {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #0066cc;
+  text-decoration: none;
 }
