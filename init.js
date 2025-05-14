@@ -21,4 +21,29 @@ db.serialize(() => {
   console.log("Database initialized with sample products.");
 });
 
+db.run(`CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+  )`, (err) => {
+    if (err) {
+      console.error("Error creating users table: ", err.message);
+    } else {
+      console.log("Users table created successfully.");
+    }
+  });
+
+// Create the users table if it doesn't exist
+db.serialize(() => {
+  db.run(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      full_name TEXT NOT NULL,
+      username TEXT UNIQUE NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL
+    )
+  `);
+});
+
 db.close();
