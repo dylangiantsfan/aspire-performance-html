@@ -626,3 +626,11 @@ body.cart-page footer {
     padding: 15px;
   }
 }
+.product-image-large {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto; /* center and space below */
+  border-radius: 6px; /* optional rounded corners */
+  object-fit: cover;  /* adjusts cropping */
+}
