@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,29 +9,27 @@
   </head>
   <body>
     <!-- Navigation Bar -->
-    <header>
-      <nav class="navbar">
-        <ul class="nav-links left">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-
-        <div class="logo">
-          <img
-            src="https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/image.png?v=1746427242942"
-            alt="Logo"
-          />
-        </div>
-
-        <ul class="nav-links right">
-          <li><a href="contact.html" class="split">Contact</a></li>
-          <li><a href="login.html" class="split">Sign In</a></li>
-          <li><a href="user.html" class="split">My Account</a></li>
-        </ul>
-      </nav>
-    </header>
-
+   <header>
+    <nav class="navbar">
+      <ul class="nav-links left">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="logo">
+        <img src="https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/image.png?v=1746427242942" alt="Logo"/>
+      </div>
+      <ul class="nav-links right">
+        <li><a href="contact.html" class="split">Contact</a></li>
+        <li><a href="login.html" class="split">Sign In</a></li>
+        <li><a href="user.html" class="split">My Account</a></li>
+        <div id="cart-header">
+        <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
+        <script src="./js/main.js"></script>
+    </div>
+      </ul>
+    </nav>
+  </header>
     <!-- Search Bar -->
     <div class="search-home">
       <form class="searchbar" id="frontsearch">
@@ -44,9 +43,14 @@
     </div>
 
     <main>
-      <div class="product-categories">
-          <div id="product-container">  <h1>Product Gallery</h1>  <script type="module" src="products-display.js"> </script></div>
-      </div>
+      <div id = "products">
+      <h1>Product Gallery</h1>
+        </div>
+      <div id="product-container">   <script type="module" src="./js/product.display.js"> </script></div>
+
+<!-- Script to display products, from product-data.js-->      
+      
+
     </main>
 
     <footer>
