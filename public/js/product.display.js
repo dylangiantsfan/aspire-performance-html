@@ -1,41 +1,55 @@
 import productList from './product.data.js';
 
-const container = document.getElementById('product-container');
+const productContainer = document.getElementById('product-container');
+const searchInput = document.getElementById('searchInput');
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+// Initial render
+renderProducts(productList);
 
-productList.forEach((product, index) => {
-  const productElement = document.createElement('div');
-  productElement.className = 'product-card';
-  
-  productElement.innerHTML = `
-    <img class="product-image" src="${product.img}" alt="${product.alt}">
-    <h2 class="product-title">${product.name}</h2>
-    <div class="product-price">${product.price}</div>
-    <button class="add-to-cart" data-index="${index}">Add to Cart</button>
-  `;
+// Search functionality
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
 
-  // Click on product card navigates to product detail
-productElement.querySelector('.product-image').addEventListener('click', () => {
-  window.location.href = `product.html?id=${index}`;
+  const filteredProducts = productList.filter(product =>
+    product.name.toLowerCase().includes(query) ||
+    product.description.toLowerCase().includes(query)
+  );
+
+  renderProducts(filteredProducts);
 });
 
-productElement.querySelector('.product-title').addEventListener('click', () => {
-  window.location.href = `product.html?id=${index}`;
-});
+// Function to render products
+function renderProducts(products) {
+  productContainer.innerHTML = ''; // Clear container
 
-  // Add to cart button
-  const addToCartBtn = productElement.querySelector('.add-to-cart');
-  addToCartBtn.addEventListener('click', (event) => {
-  event.stopPropagation(); // Prevent parent click
-  const productIndex = parseInt(event.target.dataset.index, 10);
-  cart.push(productList[productIndex]); 
-  console.log(`Added to cart:`, productList[productIndex]);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  alert(`${productList[productIndex].name} added to cart!`);
-});
+  if (products.length === 0) {
+    productContainer.innerHTML = '<p>No products found.</p>';
+    return;
+  }
 
-// Call after adding to cart
+  products.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
 
-  container.appendChild(productElement);
-});
+    card.innerHTML = `
+      <img src="${product.img}" alt="${product.alt}" class="product-image" />
+      <h3 class="product-title">
+        <a href="product.html?id=${index}" class="product-link">${product.name}</a>
+      </h3>
+      <p>${product.description}</p>
+      <p class="product-price">${product.price}</p>
+      <button class="add-to-cart" data-index="${index}">Add to Cart</button>
+    `;
+
+    // Add to cart event
+    card.querySelector('.add-to-cart').addEventListener('click', (event) => {
+      event.stopPropagation();
+      cart.push(productList[index]);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} added to cart!`);
+    });
+
+    productContainer.appendChild(card);
+  });
+}
