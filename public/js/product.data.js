@@ -4,28 +4,28 @@ const productList = [
     name: 'Performance Brake Pads',
     price: '$49.99',
     description: 'High-performance ceramic brake pads for smooth stopping.',
-    img: 'brakepads.jpg',
+    img: 'https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/brakepads.jpg?v=1747519782380',
     alt: 'Brake pads'
   },
   {
     name: 'Air Filter Replacement',
     price: '$24.99',
     description: 'Premium air filter for improved engine performance.',
-    img: 'airfilterreplacement.jpg',
+    img: 'https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/airfilterreplacement.jpg?v=1747519778808',
     alt: 'Air filter'
   },
   {
     name: 'Synthetic Motor Oil',
     price: '$32.99',
     description: '5W-30 full synthetic motor oil, 5-quart container.',
-    img: 'motoroil.jpg',
+    img: 'https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/motoroil.jpg?v=1747519779903',
     alt: 'Motor oil'
   },
   {
     name: 'LED Headlight Bulbs',
     price: '$59.99',
     description: 'Bright white 6000K LED headlight bulbs for night driving.',
-    img: 'ledbulbs.jpg',
+    img: 'https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/ledbulbs.jpg?v=1747519770122',
     alt: 'Headlight bulbs'
   },
   {
@@ -60,7 +60,7 @@ const productList = [
     name: 'Floor Mats Set',
     price: '$39.99',
     description: 'All-weather rubber floor mats for interior protection.',
-    img: 'https://cdn.glitch.global/f2e0c5dc-9624-4802-b65a-80a26ca6e63e/IMG_1261.jpeg?v=1746745130852',
+    img: 'https://www.blackhawkjapan.com/cdn/shop/products/08P15-T60-010_1_800x.png?v=1674358265',
     alt: 'Rubber floor mats'
   },
   {
