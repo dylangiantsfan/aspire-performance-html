@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Aspire Performance</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+ <style>
+      .contact-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .contact-section h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .contact-info {
+        margin-bottom: 30px;
+        text-align: center;
+        color: #555;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      input, textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        border-radius: 4px;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      button {
+        padding: 10px;
+        background-color: #222;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #444;
+      }
+    </style>
+  <body>
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar">
+        <ul class="nav-links left">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <div class="logo">
+          <img src="https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/image.png?v=1746427242942" alt="Logo" />
+        </div>
+        <ul class="nav-links right">
+          <li><a href="contact.html" class="split">Contact</a></li>
+          <li><a href="login.html" class="split">Sign In</a></li>
+          <li><a href="user.html" class="split">My Account</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="contact-section">
+        <h1>Contact Us</h1>
+
+        <div class="contact-info">
+          <p>Email: support@aspireperformance.com</p>
+          <p>Phone: +1 (800) 555-1234</p>
+          <p>Location: Bay Area, CA</p>
+        </div>
+
+        <form id="contact-form" action="#" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Aspire Performance. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
