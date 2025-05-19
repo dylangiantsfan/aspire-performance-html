@@ -1,4 +1,4 @@
-import productList from '.product-data.js';
+import productList from './product.data.js';
 
 const container = document.getElementById('product-container');
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -23,6 +23,7 @@ productElement.querySelector('.product-image').addEventListener('click', () => {
 productElement.querySelector('.product-title').addEventListener('click', () => {
   window.location.href = `product.html?id=${index}`;
 });
+
   // Add to cart button
   const addToCartBtn = productElement.querySelector('.add-to-cart');
   addToCartBtn.addEventListener('click', (event) => {
@@ -33,7 +34,6 @@ productElement.querySelector('.product-title').addEventListener('click', () => {
   localStorage.setItem('cart', JSON.stringify(cart));
   alert(`${productList[productIndex].name} added to cart!`);
 });
-
 
 // Call after adding to cart
 
