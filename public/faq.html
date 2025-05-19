@@ -8,28 +8,37 @@
   </head>
   <body>
     <!-- Navigtion Bar -->
-    <header>
-      <nav class="navbar">
-        <ul class="nav-links left">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
+ <div id="header"></div>
 
-        <div class="logo">
-          <img
-            src="https://cdn.glitch.global/bafd1c02-3b02-44e8-bf14-b145c92ee114/image.png?v=1746427242942"
-            alt="Logo"
-          />
-        </div>
+<script>
+  fetch('/header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
 
-        <ul class="nav-links right">
-          <li><a href="contact.html" class="split">Contact</a></li>
-          <li><a href="login.html" class="split">Sign In</a></li>
-          <li><a href="user.html" class="split">My Account</a></li>
-        </ul>
-      </nav>
-    </header>
+      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+      const signInLink = document.getElementById('signin-link');
+      const accountLink = document.getElementById('account-link');
+      const logoutLink = document.getElementById('logout-link');
+
+      if (isLoggedIn) {
+        signInLink.style.display = 'none';
+        accountLink.style.display = 'inline-block';
+        logoutLink.style.display = 'inline-block';
+
+        logoutLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('loggedIn');
+          window.location.href = '/';
+        });
+      } else {
+        signInLink.style.display = 'inline-block';
+        accountLink.style.display = 'none';
+        logoutLink.style.display = 'none';
+      }
+    });
+</script>
 
     <main>
       <div class="faq">
