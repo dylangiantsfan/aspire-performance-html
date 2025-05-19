@@ -480,3 +480,129 @@ footer {
   color: #0066cc;
   text-decoration: none;
 }
+/* Global Styles - Only for cart.html */
+body.cart-page {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+
+body.cart-page .nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+body.cart-page main {
+  
+  
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.cart-page h1, h2 {
+  color: #333;
+}
+
+body.cart-page .cart-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+body.cart-page .cart-item strong {
+  font-size: 16px;
+  color: #333;
+}
+
+body.cart-page .cart-item div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+body.cart-page .cart-item button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+body.cart-page .cart-item button:hover {
+  background-color: #0056b3;
+}
+
+body.cart-page #total-price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+body.cart-page form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+body.cart-page form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+body.cart-page form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+body.cart-page form button:hover {
+  background-color: #218838;
+}
+
+body.cart-page footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #343a40;
+  color: white;
+  margin-top: 40px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  body.cart-page .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  body.cart-page .nav-links.left,
+  body.cart-page .nav-links.right {
+    flex-direction: column;
+  }
+
+  body.cart-page .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  body.cart-page .cart-item div {
+    flex-direction: column;
+  }
