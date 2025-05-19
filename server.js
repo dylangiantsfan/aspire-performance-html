@@ -87,6 +87,21 @@ app.post('/login', (req, res) => {
   db.close();
 });
 
+app.get('/user', (req, res) =>{
+  if(!req.session.user) {
+    return res.redirect('/login.html');
+  }
+  res.sendFile(__dirname, 'public', 'user.html');
+  
+});
+
+// Logout function
+function logout() {
+  localStorage.removeItem("user"); 
+  window.location.href = "login.html"; // redirect to login page
+}
+
+
 // Start the server
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');

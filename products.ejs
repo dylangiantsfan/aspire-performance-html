@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head><title><%= product.name %></title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-  <h1><%= product.name %></h1>
-  <img src="<%= product.image %>" alt="<%= product.name %>" />
-  <p><%= product.description %></p>
-  <strong>$<%= product.price.toFixed(2) %></strong>
+  <header>
+    <h1>Product Details</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+    </nav>
+  </header>
+
+  <main class="product-detail">
+    <div class="product-card">
+      <img id="product-image" src="" alt="" />
+      <h2 id="product-name"></h2>
+      <p id="product-description"></p>
+      <p class="price" id="product-price"></p>
+      <button>Add to Cart</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AutoParts Store. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id'); // Assume product ID is passed in URL as ?id=123
+    fetch(`/product/${productId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("product-name").innerText = data.name;
+        document.getElementById("product-description").innerText = data.description;
+        document.getElementById("product-price").innerText = `$${data.price.toFixed(2)}`;
+        document.getElementById("product-image").src = data.image;
+        document.getElementById("product-image").alt = data.name;
+      })
+      .catch((error) => {
+        console.error("Error fetching product data:", error);
+        alert("Product not found.");
+      });
+  </script>
 </body>
 </html>
