@@ -10,35 +10,6 @@
     <!-- Navigation Bar -->
  <div id="header"></div>
 
-<script>
-  fetch('/header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('header').innerHTML = data;
-
-      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-
-      const signInLink = document.getElementById('signin-link');
-      const accountLink = document.getElementById('account-link');
-      const logoutLink = document.getElementById('logout-link');
-
-      if (isLoggedIn) {
-        signInLink.style.display = 'none';
-        accountLink.style.display = 'inline-block';
-        logoutLink.style.display = 'inline-block';
-
-        logoutLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          localStorage.removeItem('loggedIn');
-          window.location.href = '/';
-        });
-      } else {
-        signInLink.style.display = 'inline-block';
-        accountLink.style.display = 'none';
-        logoutLink.style.display = 'none';
-      }
-    });
-</script>
 
     <main>
       <div class="login-form">
@@ -82,6 +53,7 @@
     <footer>
       <p>&copy; 2025 Aspire. All rights reserved.</p>
     </footer>
+    <script src="js/main.js"></script>
 
 <!-- login confirmation--> 
  
