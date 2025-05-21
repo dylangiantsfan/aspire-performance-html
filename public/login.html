@@ -74,7 +74,7 @@
       .then(text => {
         if (text === 'Login successful!') {
           localStorage.setItem('loggedIn', 'true');
-          window.location.href = '/'; // redirect after successful login
+          window.location.href = '/user.html'; // redirect after successful login
         } else {
           errorMessage.textContent = text;
         }
