@@ -6,6 +6,68 @@
   <title>Product Details</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
+<style>
+main {
+      padding: 40px 20px;
+    }
+
+    #product-detail {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-detail-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-image-large {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .product-detail-card h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .product-detail-card p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      color: #e91e63;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    #add-to-cart {
+      padding: 12px 30px;
+      font-size: 1rem;
+      background-color: #ff4081;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #add-to-cart:hover {
+      background-color: #e91e63;
+    }
+</style>
 <body>
   <header>
      <header>
@@ -24,7 +86,6 @@
         <li><a href="user.html" class="split">My Account</a></li>
         <div id="cart-header">
         <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
-        <script src="./js/main.js"></script>
     </div>
       </ul>
     </nav>
@@ -38,7 +99,7 @@
   <footer>
     <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
   </footer>
-
+	 <script src="js/main.js"></script>
   <script type="module" src="./js/product.detail.js"></script>
 </body>
 </html>
