@@ -80,7 +80,7 @@
       method: 'POST',
       body: formData,
     })
-      .then(res => res.text())
+      .then(res => res.json())
       .then(text => {
         if (text === 'Login successful!') {
           localStorage.setItem('loggedIn', 'true');
