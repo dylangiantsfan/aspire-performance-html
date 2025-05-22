@@ -9,12 +9,11 @@
   <body>
     <!-- Navigation Bar -->
  <div id="header"></div>
-
-
     <main>
       <div class="login-form">
         <h1>Login</h1>
         <form id="login-form" class="login">
+
   <!-- Username Input -->
   <div class="input-group">
     <label for="username">Username</label>
@@ -46,13 +45,24 @@
 <p id="error-message" style="color:red;"></p>
 
         <p class="redirect">Don't have an account? <a href="register.html">Sign up</a></p>
-        <button onclick = "logout()"> Log Out</button>
       </div>
     </main>
 
-    <footer>
-      <p>&copy; 2025 Aspire. All rights reserved.</p>
-    </footer>
+   <!-- Footer -->
+  <footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="/index.html">About Us</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
     <script src="js/main.js"></script>
 
 <!-- login confirmation--> 
@@ -62,7 +72,7 @@
   const errorMessage = document.getElementById('error-message');
 
   form.addEventListener('submit', e => {
-    e.preventDefault(); // prevent normal form submission
+    e.preventDefault(); 
 
     const formData = new URLSearchParams(new FormData(form));
 

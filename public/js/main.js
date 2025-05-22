@@ -22,10 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
         signInLink.style.display = 'none';
         accountLink.style.display = 'inline-block';
         logoutLink.style.display = 'inline-block';
+      
 
         logoutLink.addEventListener('click', (e) => {
           e.preventDefault();
           localStorage.removeItem('loggedIn');
+          localStorage.removeItem('username'); 
           window.location.href = '/';
         });
       } else {
@@ -34,5 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutLink.style.display = 'none';
       }
       updateCartCount();
+
+      const welcomeHeading = document.querySelector('.user h1');
+      if (welcomeHeading) {
+        const userName = localStorage.getItem('username') || 'Guest';
+        welcomeHeading.textContent = `Welcome, ${userName}!`;
+      }
+
     });
 });

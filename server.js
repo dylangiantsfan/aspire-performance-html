@@ -17,41 +17,51 @@ app.get('/', (req, res) => {
 
 // Registration route (POST /register)
 app.post('/register', (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, confirmPassword } = req.body;
 
-  // Check if the username is already taken
+  if (!username || !password || !confirmPassword) {
+    return res.status(400).send('Username, password, and confirm password are required');
+  }
+
+  if (password !== confirmPassword) {
+    return res.status(400).send('Passwords do not match');
+  }
+
   const db = new sqlite3.Database('./db/ecommerce.db');
+
   db.get('SELECT * FROM users WHERE username = ?', [username], (err, user) => {
     if (err) {
       console.error("Error querying user: ", err);
+      db.close();
       return res.status(500).send('Server error');
     }
 
     if (user) {
+      db.close();
       return res.status(400).send('Username already taken');
     }
 
-    // Hash the password
     bcrypt.hash(password, 10, (err, hashedPassword) => {
       if (err) {
         console.error("Error hashing password: ", err);
+        db.close();
         return res.status(500).send('Server error');
       }
 
-      // Insert the user into the database
       db.run(`INSERT INTO users (username, password) VALUES (?, ?)`, [username, hashedPassword], function(err) {
+        db.close();
+
         if (err) {
           console.error("Error inserting user: ", err.message);
           return res.status(500).send('Error registering user');
         }
 
-        res.send('User registered successfully!');
+        res.status(201).send('User registered successfully!');
       });
-
-      db.close();
     });
   });
 });
+
 
 // Login route (POST /login)
 app.post('/login', (req, res) => {
@@ -77,7 +87,7 @@ app.post('/login', (req, res) => {
       }
 
       if (result) {
-        res.send('Login successful!');
+        return res.json({ message: 'Login successful!', username: user.username });
       } else {
         res.status(400).send('Incorrect password');
       }

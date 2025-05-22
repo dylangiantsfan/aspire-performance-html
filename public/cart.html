@@ -11,12 +11,14 @@
   <!-- Navigation Bar -->
   <div id="header"></div>
   <main>
-    <h1>Your Cart</h1>
+
+  <div class="cart-form-wrapper">
+      <h1>Your Cart</h1>
     <div id="cart-container"></div>
     <h2 id="total-price">Total: $0.00</h2>
 
-    <h2>Shipping Info</h2>
     <form id="checkout-form">
+      <h2>Shipping Info</h2>
       <input type="text" placeholder="Full Name" required /><br />
       <input type="text" placeholder="Address" required /><br />
       <input type="text" placeholder="City" required /><br />
@@ -29,7 +31,9 @@
 
       <button type="submit">Place Order</button>
     </form>
-  </main>
+  </div>
+</main>
+
 
   <footer>
     <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
@@ -62,7 +66,7 @@
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
     itemDiv.innerHTML = `
-      <strong>${item.name}</strong> - $${item.price}
+      <strong>${item.name}</strong> - ${item.price}
       <div>
         Quantity:
         <button data-action="decrease" data-index="${index}">–</button>
