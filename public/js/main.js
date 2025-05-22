@@ -45,3 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 });
+
+function showAddedToCartPopup() {
+  const popup = document.getElementById('cart-popup');
+  popup.classList.add('show');
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, 2000); // hides after 2 seconds
+}

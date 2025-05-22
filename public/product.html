@@ -10,63 +10,97 @@
 main {
       padding: 40px 20px;
     }
+    
+#product-detail {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px;
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    #product-detail {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    }
+.product-image-large {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
 
-    .product-detail-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
 
-    .product-image-large {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
+.product-detail-card {
+  flex: 1 1 50%;
+  text-align: left;
+}
 
-    .product-detail-card h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+.product-detail-card h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    .product-detail-card p {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.6;
-      margin: 10px 0;
-    }
+.product-detail-card p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
 
-    .product-price {
-      font-size: 1.5rem;
-      color: #e91e63;
-      font-weight: bold;
-      margin: 20px 0;
-    }
+.product-price {
+  font-size: 1.75rem;
+  color: #d50000;
+  font-weight: 700;
+  margin: 20px 0;
+}
 
-    #add-to-cart {
-      padding: 12px 30px;
-      font-size: 1rem;
-      background-color: #ff4081;
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+#add-to-cart {
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  padding: 14px 36px;
+  font-size: 1rem;
+  background-color: #d50000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(213, 0, 0, 0.2);
+}
 
-    #add-to-cart:hover {
-      background-color: #e91e63;
-    }
+#add-to-cart:hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+}
+
+.product-detail-card p.back-link {
+  margin-top: 30px;
+}
+
+.product-detail-card p.back-link a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.product-detail-card p.back-link a:hover {
+  color: #d50000;
+  border-color: #d50000;
+}
+
 </style>
 <body>
   <header>
@@ -113,5 +147,7 @@ main {
 
 	 <script src="js/main.js"></script>
   <script type="module" src="./js/product.detail.js"></script>
+
+    <div id="cart-popup" class="popup">Added to cart!</div>
 </body>
 </html>
