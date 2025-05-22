@@ -77,21 +77,22 @@
     const formData = new URLSearchParams(new FormData(form));
 
     fetch('/login', {
-      method: 'POST',
-      body: formData,
-    })
-      .then(res => res.json())
-      .then(text => {
-        if (text === 'Login successful!') {
-          localStorage.setItem('loggedIn', 'true');
-          window.location.href = '/user.html'; // redirect after successful login
-        } else {
-          errorMessage.textContent = text;
-        }
-      })
-      .catch(() => {
-        errorMessage.textContent = 'An error occurred. Please try again.';
-      });
+  method: 'POST',
+  body: formData,
+})
+  .then(res => res.json())
+  .then(data => {
+    if (data.message === 'Login successful!') {
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('username', data.username); // store username
+      window.location.href = '/user.html';
+    } else {
+      errorMessage.textContent = data.message;
+    }
+  })
+  .catch(() => {
+    errorMessage.textContent = 'An error occurred. Please try again.';
+  });	
   });
 </script>
 
