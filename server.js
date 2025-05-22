@@ -67,36 +67,31 @@ app.post('/register', (req, res) => {
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  // Query the database for the user
   const db = new sqlite3.Database('./db/ecommerce.db');
   db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
     if (err) {
       console.error("Error querying user: ", err.message);
-      return res.status(500).send('Server error');
+      return res.status(500).json({ message: 'Server error' });
     }
 
     if (!user) {
-      return res.status(400).send('User not found');
+      return res.status(400).json({ message: 'User not found' });
     }
 
-    // Compare the password with the hashed one
     bcrypt.compare(password, user.password, (err, result) => {
       if (err) {
-        console.error("Error comparing passwords: ", err);
-        return res.status(500).send('Server error');
+        console.error("Error comparing passwords: ", err.message);
+        return res.status(500).json({ message: 'Server error' });
       }
 
-      if (result) {
-        return res.json({ message: 'Login successful!', username: user.username });
-      } else {
-        res.status(400).send('Incorrect password');
+      if (!result) {
+        return res.status(400).json({ message: 'Incorrect password' });
       }
+
+      res.status(200).json({ message: 'Login successful!', username: user.username });
     });
   });
-
-  db.close();
 });
-
 app.get('/user', (req, res) =>{
   if(!req.session.user) {
     return res.redirect('/login.html');
