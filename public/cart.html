@@ -11,29 +11,31 @@
   <!-- Navigation Bar -->
   <div id="header"></div>
   <main>
-
-  <div class="cart-form-wrapper">
+  <div class="cart-checkout-container">
+    <div class="cart-form-wrapper">
       <h1>Your Cart</h1>
-    <div id="cart-container"></div>
-    <h2 id="total-price">Total: $0.00</h2>
+      <div id="cart-container"></div>
+      <h2 id="total-price">Total: $0.00</h2>
+    </div>
 
-    <form id="checkout-form">
-      <h2>Shipping Info</h2>
-      <input type="text" placeholder="Full Name" required /><br />
-      <input type="text" placeholder="Address" required /><br />
-      <input type="text" placeholder="City" required /><br />
-      <input type="text" placeholder="Zip Code" required /><br /><br />
+    <div class="cart-form-wrapper">
+      <form id="checkout-form">
+        <h2>Shipping Info</h2>
+        <input type="text" placeholder="Full Name" required /><br />
+        <input type="text" placeholder="Address" required /><br />
+        <input type="text" placeholder="City" required /><br />
+        <input type="text" placeholder="Zip Code" required /><br /><br />
 
-      <h2>Payment Info</h2>
-      <input type="text" placeholder="Card Number" required /><br />
-      <input type="text" placeholder="Expiration Date" required /><br />
-      <input type="text" placeholder="CVV" required /><br /><br />
+        <h2>Payment Info</h2>
+        <input type="text" placeholder="Card Number" required /><br />
+        <input type="text" placeholder="Expiration Date" required /><br />
+        <input type="text" placeholder="CVV" required /><br /><br />
 
-      <button type="submit">Place Order</button>
-    </form>
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
   </div>
 </main>
-
 
   <footer>
     <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
@@ -41,48 +43,56 @@
 
   <script src="js/main.js"></script>
   <script>
+  document.addEventListener('DOMContentLoaded', () => {
     const cartContainer = document.getElementById('cart-container');
+    const totalPriceElem = document.getElementById('total-price');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const username = localStorage.getItem('username') || 'guest'; // Get logged in user or guest
 
     function renderCart() {
-  cartContainer.innerHTML = '';
-  let total = 0;
+      cartContainer.innerHTML = '';
+      let total = 0;
 
-  cart.forEach(item => {
-    if (!item.quantity) item.quantity = 1;
-  });
+      cart.forEach(item => {
+        if (!item.quantity) item.quantity = 1;
+      });
 
-  if (cart.length === 0) {
-    cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-    document.getElementById('total-price').textContent = 'Total: $0.00';
-    return;
-  }
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        totalPriceElem.textContent = 'Total: $0.00';
+        return;
+      }
 
-  cart.forEach((item, index) => {
-    const itemPrice = parseFloat(item.price.replace('$', ''));
-    const itemTotal = itemPrice * item.quantity;
-    total += itemTotal;
+      cart.forEach((item, index) => {
+        const itemPrice = parseFloat(item.price.replace('$', '')) || 0;
+        const itemTotal = itemPrice * item.quantity;
+        total += itemTotal;
 
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'cart-item';
-    itemDiv.innerHTML = `
-      <strong>${item.name}</strong> - ${item.price}
-      <div>
-        Quantity:
-        <button data-action="decrease" data-index="${index}">–</button>
-        <span>${item.quantity}</span>
-        <button data-action="increase" data-index="${index}">+</button>
-        <button data-action="remove" data-index="${index}">Remove</button>
-      </div>
-    `;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <div class="cart-item-content">
+            <img src="${item.img}" alt="${item.name}" class="cart-item-image" />
+            <div class="cart-item-details">
+              <strong>${item.name}</strong> - ${item.price}
+              <div>
+                Quantity:
+                <button data-action="decrease" data-index="${index}">–</button>
+                <span>${item.quantity}</span>
+                <button data-action="increase" data-index="${index}">+</button>
+                <button data-action="remove" data-index="${index}">Remove</button>
+              </div>
+            </div>
+          </div>
+        `;
 
-    cartContainer.appendChild(itemDiv);
-  });
+        cartContainer.appendChild(itemDiv);
+      });
 
-  document.getElementById('total-price').textContent = `Total: $${total.toFixed(2)}`;
-}
+      totalPriceElem.textContent = `Total: $${total.toFixed(2)}`;
+    }
 
-    // Event delegation for quantity and remove buttons
+    // Event delegation for cart buttons
     cartContainer.addEventListener('click', (e) => {
       const index = e.target.dataset.index;
       if (index === undefined) return;
@@ -99,16 +109,44 @@
       renderCart();
     });
 
-    // Submit order
+    // Checkout form submit
     document.getElementById('checkout-form').addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // Use user-specific key for orders
+      const userOrdersKey = `orders_${username}`;
+      const orders = JSON.parse(localStorage.getItem(userOrdersKey)) || [];
+
+      const newOrder = {
+        items: cart.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          img: item.img
+        })),
+        total: cart.reduce((sum, item) => {
+          const price = parseFloat(item.price.replace('$', '')) || 0;
+          return sum + price * item.quantity;
+        }, 0),
+        date: new Date().toISOString()
+      };
+
+      orders.push(newOrder);
+      localStorage.setItem(userOrdersKey, JSON.stringify(orders));
+
       alert('Order placed! Thank you.');
+
+      // Clear cart
       localStorage.removeItem('cart');
       cart = [];
       renderCart();
     });
 
+    // Initial render
     renderCart();
-  </script>
+  });
+</script>
+
 </body>
 </html>

@@ -53,3 +53,38 @@ function showAddedToCartPopup() {
     popup.classList.remove('show');
   }, 2000); // hides after 2 seconds
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const ordersContainer = document.getElementById('orders-container');
+  const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+  if (orders.length === 0) {
+    ordersContainer.textContent = 'You have no past orders.';
+    return;
+  }
+
+  // Render orders
+  ordersContainer.innerHTML = ''; // clear "Loading..."
+
+  orders.forEach((order, index) => {
+    const orderDiv = document.createElement('div');
+    orderDiv.className = 'order';
+
+    const date = new Date(order.date);
+    orderDiv.innerHTML = `
+      <h3>Order #${index + 1} - ${date.toLocaleString()}</h3>
+      <p>Total: $${order.total.toFixed(2)}</p>
+      <ul>
+        ${order.items.map(item => `
+          <li>
+            <img src="${item.img}" alt="${item.name}" style="width:50px; height:50px; object-fit:cover; vertical-align:middle; margin-right:10px;" />
+            ${item.name} — ${item.quantity} x ${item.price}
+          </li>
+        `).join('')}
+      </ul>
+      <hr/>
+    `;
+
+    ordersContainer.appendChild(orderDiv);
+  });
+});

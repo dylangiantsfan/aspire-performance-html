@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order History - Aspire Performance</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="header"></div>
+
+  <main>
+    <h1>Your Order History</h1>
+    <div id="order-list"></div>
+    <a href="user.html" class="back-link">← Back to Profile</a>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('username') || 'guest';
+      const userOrdersKey = `orders_${username}`;
+      const orders = JSON.parse(localStorage.getItem(userOrdersKey)) || [];
+      const orderListContainer = document.getElementById('order-list');
+
+      if (orders.length === 0) {
+        orderListContainer.innerHTML = '<p>No orders found.</p>';
+      } else {
+        orderListContainer.innerHTML = orders.map(order => `
+          <div class="order">
+            <h3>Order on ${new Date(order.date).toLocaleString()}</h3>
+            <p>Total: $${order.total.toFixed(2)}</p>
+            <ul>
+              ${order.items.map(item => `
+                <li>
+                  <img src="${item.img}" alt="${item.name}" />
+                  <span>${item.name} x${item.quantity} - ${item.price}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+  <!-- Footer -->
+  <footer>
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="/index.html">About Us</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 AutoParts Hub. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
