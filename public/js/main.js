@@ -51,7 +51,7 @@ function showAddedToCartPopup() {
   popup.classList.add('show');
   setTimeout(() => {
     popup.classList.remove('show');
-  }, 2000); // hides after 2 seconds
+  }, 2000); 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Render orders
-  ordersContainer.innerHTML = ''; // clear "Loading..."
+  ordersContainer.innerHTML = ''; 
 
   orders.forEach((order, index) => {
     const orderDiv = document.createElement('div');
