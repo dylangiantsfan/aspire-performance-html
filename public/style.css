@@ -861,34 +861,78 @@ body.cart-page .cart-item-content {
 #cart-header a:hover .cart-icon {
   animation: pulse 0.6s ease-in-out infinite;
 }
+
+/* Order-history.html styling */
+#order-history {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
+  margin: 30px auto;
+  max-width: 900px;
+  padding: 25px 30px;
+  background: #f9fafb; /* soft light background */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+
+  color: #333;
+  transition: box-shadow 0.3s ease;
+}
+
+#order-history:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* New: style each order box */
 #order-list .order {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  background: #fafafa;
+  background: white;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.25s ease;
 }
 
-#order-list .order h3 {
-  margin-top: 0;
-}
-
-#order-list .order ul {
-  list-style-type: none;
-  padding-left: 0;
+#order-list .order:hover {
+  box-shadow: 0 7px 18px rgba(0,0,0,0.15);
 }
 
 #order-list .order ul li {
-  margin: 5px 0;
   display: flex;
   align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 #order-list .order ul li img {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-  margin-right: 10px;
-  border-radius: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex-shrink: 0; /* prevent shrinking */
 }
 
+/* Style back-link with hover effect */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 16px;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.back-link:hover {
+  color: rgb(174, 22, 22);
+}
+
+.user #order-history-btn a:visited {
+  color: inherit; 
+}
+.user #order-history-btn a {
+  text-decoration: none;
+}
